@@ -6,12 +6,8 @@ import streamlit as st
 
 from PIL import Image
 
-
-@st.cache_data
-def load_model():
-    pickle_in = open("heart.pkl","rb")
-    classifier=pickle.load(pickle_in)
-    return pickle_in
+pickle_in = open("heart.pkl","rb")
+classifier=pickle.load(pickle_in)
 
 def get_user_inputs():
     st.header("Heart Disease Prediction Input (TEST, take it with a grain of salt)")
@@ -38,6 +34,10 @@ def get_user_inputs():
     })
 
     return data
+    
+    prediction=classifier.predict([[age, sex, chestpain, restingbloodsg, restingeletro, heartrate]])
+    print(prediction)
+    return prediction
 
 user_data = get_user_inputs()
 
