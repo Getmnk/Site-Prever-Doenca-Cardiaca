@@ -18,7 +18,7 @@ def get_user_inputs():
     
     age = st.number_input("Age?", min_value=0, max_value=100)
     sex = st.selectbox("Sex", ["Male", "Female"])
-    chestpain = st.number_input("Chest pain? (0 = none, 1 = bearable, 2 = unbearable, 3 = very painful)" min_value=0, max_value=3, step=1)
+    chestpain = st.number_input("Chest pain? (0 = none, 1 = bearable, 2 = unbearable, 3 = very painful)", min_value=0, max_value=3, step=1)
     restingblood = st.number_input("Resting blood pressure?", min_value=0, max_value=200)
     fastingbloodsg = st.selectbox("Is your fasting blood sugar bigger than 120 mg/dl?", ["No", "Yes"])
     restingeletro = st.number_input("Resting electrocardiographic results (values 0,1,2)", min_value=0, max_value=2, step=1)
