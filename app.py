@@ -35,14 +35,10 @@ def get_user_inputs():
 
     return data
     
-    prediction=classifier.predict([[age, sex, chestpain, restingbloodsg, restingeletro, heartrate]])
-    print(prediction)
-    return prediction
-
 user_data = get_user_inputs()
 
 if st.button("Predict"):
-    predictions = classifier.predict(user_data)
+    predictions = pickle.predict(user_data)
     
     st.write("Predictions shape:", predictions.shape)
     st.write("Predictions data:", predictions)
