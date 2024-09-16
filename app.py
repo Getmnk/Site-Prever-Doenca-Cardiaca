@@ -1,54 +1,40 @@
-import streamlit as st
-import pandas as pd
 import tensorflow as tf
+import numpy as np
+import pickle
+import pandas as pd
+import streamlit as st 
+
+from PIL import Image
+
 
 @st.cache_data
 def load_model():
-    model = tf.keras.models.load_model('heart.pkl')
-    return model
-
-with st.spinner("Loading Model...."):
-    model = load_model()
+    pickle_in = open("heart.pkl","rb")
+    classifier=pickle.load(pickle_in)
+    return pickle_in
 
 def get_user_inputs():
     st.header("Heart Disease Prediction Input (TEST, take it with a grain of salt)")
     
-    bmi = st.number_input("BMI (Body Mass Index)", min_value=0, max_value=100)
-    smoking = st.selectbox("Do you smoke?", ["No", "Yes"])
-    alcohol_drinking = st.selectbox("Do you drink alcohol?", ["No", "Yes"])
-    stroke = st.selectbox("Have you ever had a stroke?", ["No", "Yes"])
-    physical_health = st.number_input("Physical Health (Number of bad physical health days in the last 30 days)", min_value=0, max_value=30, step=1)
-    mental_health = st.number_input("Mental Health (Number of bad mental health days in the last 30 days)", min_value=0, max_value=30, step=1)
-    diff_walking = st.selectbox("Do you have difficulty walking or climbing stairs?", ["No", "Yes"])
+    age = st.number_input("Age?", min_value=0, max_value=100)
     sex = st.selectbox("Sex", ["Male", "Female"])
-    physical_activity = st.selectbox("Do you engage in physical activity?", ["No", "Yes"])
-    asthma = st.selectbox("Do you have asthma?", ["No", "Yes"])
-    kidney_disease = st.selectbox("Do you have kidney disease?", ["No", "Yes"])
-    skin_cancer = st.selectbox("Do you have skin cancer?", ["No", "Yes"])
+    chestpain = st.number_input("Chest pain? (0 = none, 1 = bearable, 2 = unbearable, 3 = very painful)" min_value=0, max_value=3, step=1)
+    restingblood = st.number_input("Resting blood pressure?", min_value=0, max_value=200)
+    fastingbloodsg = st.selectbox("Is your fasting blood sugar bigger than 120 mg/dl?", ["No", "Yes"])
+    restingeletro = st.number_input("Resting electrocardiographic results (values 0,1,2)", min_value=0, max_value=2, step=1)
+    heartrate = st.number_input("Maximum heart rate achieved?", min_value=0, max_value=202, step=1)
     
-    smoking = 1 if smoking == "Yes" else 0
-    alcohol_drinking = 1 if alcohol_drinking == "Yes" else 0
-    stroke = 1 if stroke == "Yes" else 0
-    diff_walking = 1 if diff_walking == "Yes" else 0
-    physical_activity = 1 if physical_activity == "Yes" else 0
-    asthma = 1 if asthma == "Yes" else 0
-    kidney_disease = 1 if kidney_disease == "Yes" else 0
-    skin_cancer = 1 if skin_cancer == "Yes" else 0
     sex = 0 if sex == "Female" else 1 
+    fastingbloodsg == 0 if fastingbloodsg == "No" else 1
     
     data = pd.DataFrame({
-        "BMI": [bmi],
-        "Smoking": [smoking],
-        "AlcoholDrinking": [alcohol_drinking],
-        "Stroke": [stroke],
-        "PhysicalHealth": [physical_health],
-        "MentalHealth": [mental_health],
-        "DiffWalking": [diff_walking],
-        "Sex": [sex],
-        "PhysicalActivity": [physical_activity],
-        "Asthma": [asthma],
-        "KidneyDisease": [kidney_disease],
-        "SkinCancer": [skin_cancer]
+        "age": [age],
+        "sex": [sex],
+        "chestpain": [chestpain],
+        "restingblood": [restingblood],
+        "fastingbloodsg": [fastingbloodsg],
+        "restingeletro": [restingeletro],
+        "heartrate": [heartrate]
     })
 
     return data
@@ -56,7 +42,7 @@ def get_user_inputs():
 user_data = get_user_inputs()
 
 if st.button("Predict"):
-    predictions = model.predict(user_data)
+    predictions = classifier.predict(user_data)
     
     st.write("Predictions shape:", predictions.shape)
     st.write("Predictions data:", predictions)
