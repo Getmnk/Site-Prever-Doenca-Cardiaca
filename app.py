@@ -37,10 +37,18 @@ if st.button("Predict"):
     predictions = classifier.predict(user_data)
     
     st.write("Predictions:", predictions)
-
-    if len(predictions.shape) == 2 and predictions.shape[1] == 1:
-        heart_disease_probability = predictions[0][0]  
-        st.write(f"Heart Disease Risk Probability: {heart_disease_probability:.2f}")
-        st.write(f"Heart Disease Risk (Binary): {'Yes' if heart_disease_probability > 0.5 else 'No'}")
+    st.write("Predictions shape:", predictions.shape)
+   
+    st.write("First few prediction values:", predictions[:5] if len(predictions) > 5 else predictions)
+    if len(predictions.shape) == 2:
+        if predictions.shape[1] == 1:
+            heart_disease_probability = predictions[0][0]
+            st.write(f"Heart Disease Risk Probability: {heart_disease_probability:.2f}")
+            st.write(f"Heart Disease Risk (Binary): {'Yes' if heart_disease_probability > 0.5 else 'No'}")
+        else:
+            st.error("Unexpected second dimension size in predictions.")
+    elif len(predictions.shape) == 1:
+        st.write(f"Heart Disease Risk (Binary): {'Yes' if predictions[0] == 1 else 'No'}")
     else:
         st.error("Unexpected shape of prediction output. Check the model and input data.")
+
