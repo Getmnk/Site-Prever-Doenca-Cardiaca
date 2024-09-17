@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 
 def get_user_inputs():
-    st.header("Prever Diabetes (TESTE)")
+    st.header("Prever Diabete (TESTE)")
 
     age = st.number_input("Idade?", min_value=0, max_value=100)
     sex = st.selectbox("Sexo", ["Masculino", "Feminino"])
