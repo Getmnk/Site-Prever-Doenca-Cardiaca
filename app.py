@@ -1,6 +1,7 @@
 import pickle
 import pandas as pd
 import streamlit as st
+import numpy as py
 
 def get_user_inputs():
     st.header("Prever Doença Cardiaca (TESTE)")
