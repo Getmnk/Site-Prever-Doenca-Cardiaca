@@ -59,10 +59,7 @@ def main():
         result = predict_disease(age, sex, chestpain, restingblood, chol, fastingbloodsg, restingeletro, heartrate, angina, stdepression, stslope)
         st.success('Resultado da previsão: {}'.format("Sim" if result[0] == 1 else "Não"))
 
-    if st.button("Sobre"):
-        st.text("Aprenda mais sobre a previsão de doenças cardíacas.")
-        st.text("Construído com Streamlit.")
-
+   
 if __name__ == '__main__':
     main()
 
