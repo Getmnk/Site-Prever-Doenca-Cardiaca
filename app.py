@@ -9,7 +9,7 @@ classifier = pickle.load(pickle_in)
 def welcome():
     return "Bem-vindo ao Previsor de Doença Cardíaca (TESTE)"
 
-def predict_disease(age, sex, chestpain, restingblood, chol, fastingbloodsg, restingeletro, heartrate, angina, stdepression, stslope):
+def predict_disease(age, sex, chestpain, restingblood, chol, fastingbloodsg, restingeletro, heartrate, angina):
     """Função para prever a doença cardíaca com base nas entradas do usuário.
     
     Args:
@@ -22,13 +22,11 @@ def predict_disease(age, sex, chestpain, restingblood, chol, fastingbloodsg, res
         restingeletro (int): Resultados eletrocardiográficos em repouso.
         heartrate (int): Batimentos cardíacos máximos.
         angina (int): Indica dor torácica.
-        stdepression (float): Depressão do segmento ST.
-        stslope (int): Inclinação do ST.
         
     Returns:
         prediction: Resultado da previsão.
     """
-    prediction = classifier.predict([[age, sex, chestpain, restingblood, chol, fastingbloodsg, restingeletro, heartrate, angina, stdepression, stslope]])
+    prediction = classifier.predict([[age, sex, chestpain, restingblood, chol, fastingbloodsg, restingeletro, heartrate, angina]])
     return prediction
 
 def main():
@@ -48,15 +46,13 @@ def main():
     restingeletro = st.number_input("Resultados eletrocardiográficos em repouso? 0 = Normal, 1 = anormalidade da onda ST-T (inversões da onda T e/ou elevação ou depressão do segmento ST > 0,05 mV) , 2 = mostrando hipertrofia ventricular esquerda provável ou definitiva pelos critérios de Estes", min_value=0, max_value=2, step=1)
     heartrate = st.number_input("Batimentos cardíacos máximos atingidos?", min_value=0, max_value=202, step=1)
     angina = st.selectbox("Você tem dor torácica?", ["Não", "Sim"])
-    stdepression = st.number_input("Depressão do segmento ST induzida pelo exercício?", min_value=0.0, max_value=6.2, step=0.1)
-    stslope = st.number_input("Inclinação do ST? 0 = Ascendente, 1 = Plano, 2 = Descendente", min_value=0, max_value=2, step=1)
-
+    
     sex = 0 if sex == "Feminino" else 1
     fastingbloodsg = 0 if fastingbloodsg == "Não" else 1
     angina = 0 if angina == "Não" else 1
 
     if st.button("Prever"):
-        result = predict_disease(age, sex, chestpain, restingblood, chol, fastingbloodsg, restingeletro, heartrate, angina, stdepression, stslope)
+        result = predict_disease(age, sex, chestpain, restingblood, chol, fastingbloodsg, restingeletro, heartrate, angina)
         st.success('Resultado da previsão: {}'.format("Sim" if result[0] == 1 else "Não"))
 
    
