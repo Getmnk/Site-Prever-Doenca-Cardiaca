@@ -53,7 +53,7 @@ def main():
 
     if st.button("Prever"):
         result = predict_disease(age, sex, chestpain, restingblood, chol, fastingbloodsg, restingeletro, heartrate, angina)
-        st.success('Resultado da previsão: {}'.format("Sim" if result[0] == 1 else "Não"))
+        st.success('Resultado da previsão: {}'.format("Sim" if result[0] == 0.90 else "Não"))
 
    
 if __name__ == '__main__':
