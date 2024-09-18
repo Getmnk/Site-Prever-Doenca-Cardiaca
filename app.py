@@ -3,6 +3,9 @@ import pandas as pd
 import streamlit as st
 import numpy as py
 
+pickle_in = open("heart.pkl","rb")
+classifier=pickle.load(pickle_in)
+
 def get_user_inputs():
     st.header("Prever Doença Cardiaca (TESTE)")
 
@@ -37,9 +40,6 @@ def get_user_inputs():
     })
 
     return data
-
-with open("heart.pkl", "rb") as pickle_in:
-    classifier = pickle.load(pickle_in)
 
 user_data = get_user_inputs()
 
