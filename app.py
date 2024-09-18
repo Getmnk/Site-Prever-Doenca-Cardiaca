@@ -26,17 +26,17 @@ def get_user_inputs():
     angina = 0 if angina == "Não" else 1
     
     data = pd.DataFrame({
-        "age": [age],
-        "sex": [sex],
-        "chestpain": [chestpain],
-        "restingblood": [restingblood],
-        "chol": [chol],
-        "fastingbloodsg": [fastingbloodsg],
-        "restingeletro": [restingeletro],
-        "heartrate": [heartrate],
-        "angina": [angina],
-        "stdepression": [stdepression],
-        "stslope": [stslope],
+        "age": [Age],
+        "sex": [Sex],
+        "chestpain": [ChestPainType],
+        "restingblood": [RestingBP],
+        "chol": [Cholesterol],
+        "fastingbloodsg": [FastingBS],
+        "restingeletro": [RestingECG],
+        "heartrate": [MaxHR],
+        "angina": [ExerciseAngina],
+        "stdepression": [Oldpeak],
+        "stslope": [ST_Slope],
     })
 
     return data
