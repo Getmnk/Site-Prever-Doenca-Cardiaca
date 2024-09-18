@@ -32,7 +32,6 @@ def predict_disease(age, sex, chestpain, restingblood, chol, fastingbloodsg, res
     return prediction
 
 def main():
-    st.title("Previsor de Doença Cardíaca")
     html_temp = """
     <div style="background-color:tomato;padding:10px">
     <h2 style="color:white;text-align:center;">Aplicativo de Previsão de Doença Cardíaca</h2>
