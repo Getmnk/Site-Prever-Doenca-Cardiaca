@@ -7,7 +7,7 @@ pickle_in = open("heart.pkl", "rb")
 classifier = pickle.load(pickle_in)
 
 def welcome():
-    return "Bem-vindo ao Previsor de Doença Cardíaca"
+    return "Bem-vindo ao Previsor de Doença Cardíaca (TESTE)"
 
 def predict_disease(age, sex, chestpain, restingblood, chol, fastingbloodsg, restingeletro, heartrate, angina, stdepression, stslope):
     """Função para prever a doença cardíaca com base nas entradas do usuário.
