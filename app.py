@@ -7,7 +7,7 @@ pickle_in = open("heart.pkl", "rb")
 classifier = pickle.load(pickle_in)
 
 def welcome():
-    return "Bem-vindo ao Previsor de Doença Cardíaca (TESTE)"
+    return "Previsor de Doença Cardíaca (TESTE)"
 
 def predict_disease(age, sex, chestpain, restingblood, chol, fastingbloodsg, restingeletro, heartrate, angina):
     """Função para prever a doença cardíaca com base nas entradas do usuário.
@@ -32,7 +32,7 @@ def predict_disease(age, sex, chestpain, restingblood, chol, fastingbloodsg, res
 def main():
     html_temp = """
     <div style="background-color:tomato;padding:10px">
-    <h2 style="color:white;text-align:center;">Aplicativo de Previsão de Doença Cardíaca</h2>
+    <h2 style="color:white;text-align:center;">Previsor de Doença Cardíaca (TESTE)</h2>
     </div>
     """
     st.markdown(html_temp, unsafe_allow_html=True)
@@ -53,7 +53,7 @@ def main():
 
     if st.button("Prever"):
         result = predict_disease(age, sex, chestpain, restingblood, chol, fastingbloodsg, restingeletro, heartrate, angina)
-        st.success('Resultado da previsão: {}'.format("Sim" if result[0] == 0.90 else "Não"))
+        st.success('Resultado da previsão: {}'.format("Sim (ISSO É UM TESTE, PODE DAR RESULTADOS NÃO PRECISOS)" if result[0] == 0.90 else "Não (ISSO É UM TESTE, PODE DAR RESULTADOS NÃO PRECISOS)"))
 
    
 if __name__ == '__main__':
