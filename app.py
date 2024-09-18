@@ -7,23 +7,36 @@ def get_user_inputs():
 
     age = st.number_input("Idade?", min_value=0, max_value=100)
     sex = st.selectbox("Sexo", ["Masculino", "Feminino"])
-    chestpain = st.number_input("Dor no peito? (0 = Nenhuma, 1 = Controlavel, 2 = Irritante, 3 = Muito Dolorido)", min_value=0, max_value=3, step=1)
-    restingblood = st.number_input("Pressão arterial em repouso?", min_value=0, max_value=200)
+    chestpain = st.number_input("Dor no peito? (1 = Nenhuma, 2 = Controlavel, 3 = Irritante, 4 = Muito Dolorido)", min_value=1, max_value=4, step=1)
+    restingblood = st.number_input("Pressão arterial em repouso?", min_value=0, max_value=200, step=1)
+    chol = st.number_input("Colesterol?", min_value=126, max_value=564, step=1)
     fastingbloodsg = st.selectbox("O seu açúcar no sangue em jejum é maior que 120 mg/dl?", ["Não", "Sim"])
     restingeletro = st.number_input("Resultados eletrocardiográficos em repouso? (valores 0,1,2)", min_value=0, max_value=2, step=1)
     heartrate = st.number_input("Batimentos cardiacos maximos atingidos?", min_value=0, max_value=202, step=1)
-
+    angina = st.selectbox("Você tem dor toracica?", ["Não", "Sim"])
+    stdepression = st.number_input("Depressão do segmento ST induzida pelo exercicio em relação ao repouso?", min_value=0, max_value=6.2, step=1)
+    stslope = st.number_input("Inclinação do ST?", min_value=1, max_value=3, step=1)
+    vessels = st.number_input("principais vasos sanguíneos do coração?", min_value=0, max_value=3, step=1)
+    talio = st.number_input("Resultado do teste de talio?", min_value=3, max_value=7, step=1)
+    
     sex = 0 if sex == "Feminino" else 1
     fastingbloodsg = 0 if fastingbloodsg == "Não" else 1
-
+    angina = 0 if angina == "Não" else 1
+    
     data = pd.DataFrame({
         "age": [age],
         "sex": [sex],
         "chestpain": [chestpain],
         "restingblood": [restingblood],
+        "chol": [chol],
         "fastingbloodsg": [fastingbloodsg],
         "restingeletro": [restingeletro],
-        "heartrate": [heartrate]
+        "heartrate": [heartrate],
+        "angina": [angina],
+        "stdepression": [stdepression],
+        "stslope": [stslope],
+        "vessels": [vessels],
+        "talio": [talio]
     })
 
     return data
