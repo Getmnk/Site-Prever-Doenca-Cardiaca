@@ -43,7 +43,7 @@ def main():
     sex = st.selectbox("Sexo", ["Masculino", "Feminino"])
     chestpain = st.number_input("Dor no peito? (0 = Angina típica, 1 = Angina atipica, 2 = Dor não anginosa, 3 = Assintomatico)", min_value=0, max_value=3, step=1)
     restingblood = st.number_input("Pressão arterial em repouso?", min_value=0, max_value=200, step=1)
-    chol = st.number_input("Colesterol?", min_value=126, max_value=564, step=1)
+    chol = st.number_input("Nivel de colesterol sérico?", min_value=126, max_value=564, step=1)
     fastingbloodsg = st.selectbox("Açúcar no sangue em jejum maior que 120 mg/dl?", ["Não", "Sim"])
     restingeletro = st.number_input("Resultados eletrocardiográficos em repouso? 0 = Normal, 1 = anormalidade da onda ST-T (inversões da onda T e/ou elevação ou depressão do segmento ST > 0,05 mV) , 2 = mostrando hipertrofia ventricular esquerda provável ou definitiva pelos critérios de Estes", min_value=0, max_value=2, step=1)
     heartrate = st.number_input("Batimentos cardíacos máximos atingidos?", min_value=0, max_value=202, step=1)
