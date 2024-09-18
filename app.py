@@ -41,15 +41,15 @@ def main():
 
     age = st.number_input("Idade?", min_value=0, max_value=100)
     sex = st.selectbox("Sexo", ["Masculino", "Feminino"])
-    chestpain = st.number_input("Dor no peito? (1 = Nenhuma, 2 = Controlável, 3 = Irritante, 4 = Muito Dolorido)", min_value=1, max_value=4, step=1)
+    chestpain = st.number_input("Dor no peito? (0 = Angina típica, 1 = Angina atipica, 2 = Dor não anginosa, 3 = Assintomatico)", min_value=0, max_value=3, step=1)
     restingblood = st.number_input("Pressão arterial em repouso?", min_value=0, max_value=200, step=1)
     chol = st.number_input("Colesterol?", min_value=126, max_value=564, step=1)
     fastingbloodsg = st.selectbox("Açúcar no sangue em jejum maior que 120 mg/dl?", ["Não", "Sim"])
-    restingeletro = st.number_input("Resultados eletrocardiográficos em repouso? (valores 0,1,2)", min_value=0, max_value=2, step=1)
+    restingeletro = st.number_input("Resultados eletrocardiográficos em repouso? 0 = Normal, 1 = anormalidade da onda ST-T (inversões da onda T e/ou elevação ou depressão do segmento ST > 0,05 mV) , 2 = mostrando hipertrofia ventricular esquerda provável ou definitiva pelos critérios de Estes", min_value=0, max_value=2, step=1)
     heartrate = st.number_input("Batimentos cardíacos máximos atingidos?", min_value=0, max_value=202, step=1)
     angina = st.selectbox("Você tem dor torácica?", ["Não", "Sim"])
     stdepression = st.number_input("Depressão do segmento ST induzida pelo exercício?", min_value=0.0, max_value=6.2, step=0.1)
-    stslope = st.number_input("Inclinação do ST?", min_value=1, max_value=3, step=1)
+    stslope = st.number_input("Inclinação do ST? 0 = Ascendente, 1 = Plano, 2 = Descendente", min_value=0, max_value=2, step=1)
 
     sex = 0 if sex == "Feminino" else 1
     fastingbloodsg = 0 if fastingbloodsg == "Não" else 1
