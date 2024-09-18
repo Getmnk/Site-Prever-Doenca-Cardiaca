@@ -16,8 +16,6 @@ def get_user_inputs():
     angina = st.selectbox("Você tem dor toracica?", ["Não", "Sim"])
     stdepression = st.number_input("Depressão do segmento ST induzida pelo exercicio em relação ao repouso?", min_value=0.0, max_value=6.2, step=0.1)
     stslope = st.number_input("Inclinação do ST?", min_value=1, max_value=3, step=1)
-    vessels = st.number_input("principais vasos sanguíneos do coração?", min_value=0, max_value=3, step=1)
-    talio = st.number_input("Resultado do teste de talio?", min_value=3, max_value=7, step=1)
     
     sex = 0 if sex == "Feminino" else 1
     fastingbloodsg = 0 if fastingbloodsg == "Não" else 1
@@ -35,8 +33,6 @@ def get_user_inputs():
         "angina": [angina],
         "stdepression": [stdepression],
         "stslope": [stslope],
-        "vessels": [vessels],
-        "talio": [talio]
     })
 
     return data
